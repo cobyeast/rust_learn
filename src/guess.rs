@@ -2,7 +2,7 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
-pub fn guess() -> i32 {
+pub fn guess() {
   let stdin = io::stdin;
   let secret = rand::thread_rng().gen_range(1, 1001);
 
@@ -21,7 +21,8 @@ pub fn guess() -> i32 {
       Ordering::Less => println!("Too small."),
       Ordering::Greater => println!("Too big."),
       Ordering::Equal => {
-        return input;
+        println!("Correct, winning number was {}", secret);
+        break;
       }
     }
   }
